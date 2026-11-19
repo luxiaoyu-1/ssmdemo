@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>update</title>
+    <script src="https://cdn.staticfile.net/jquery/2.0.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <form id="update_work">
+        <label>id:</label>
+        <input type="text" name="id" id="id">
+        <label>name:</label>
+        <input type="text" name="name" id="name">
+        <label>num:</label>
+        <input type="text" id="num">
+        <label>classes:</label>
+        <input type="text" name="classes" id="classes">
+
+        <input type="button" value="update" onclick="update_work()">
+    </form>
+    <script>
+        function update_work(){
+            var id = $('#id').val();
+            var name = $('#name').val();
+            var num = $('#num').val();
+            var classes = $('#classes').val();
+            $.ajax({
+                url:'/work/update',
+                type:'POST',
+                data:{
+                    id:id,
+                    name:name,
+                    num:num,
+                    classes:classes
+                },
+                success:function(data){
+                    if(data.success){
+                        alert('更新成功');
+                    }else{
+                        alert('更新失败');
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+</html>

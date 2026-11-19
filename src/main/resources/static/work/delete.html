@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>delete</title>
+    <script src="https://cdn.staticfile.net/jquery/2.0.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <form id="delete_work">
+        <label>id:</label>
+        <input type="text" name="id" id="id">
+        <input type="button" value="delete" onclick="delete_work()">
+    </form>
+    <script>
+        function delete_work(){
+            var id = $('#id').val();
+            $.ajax({
+                url:'/work/delete',
+                type:'POST',
+                data:{
+                    id:id
+                },
+                success:function(data){
+                    if(data.success){
+                        alert('删除成功');
+                    }else{
+                        alert('删除失败');
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+</html>

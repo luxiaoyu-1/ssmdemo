@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+   <title>add 2 nums</title>
+    <script src="https://cdn.staticfile.net/jquery/2.0.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <form id="insert_work">
+        <label>name:</label>
+        <input type="text" name="name" id="name">
+        <label>num:</label>
+        <input type="text" name="num" id="num">
+        <label>classes:</label>
+        <input type="text" id="classes">
+
+        <input type="button" value="add" onclick="insert_work()">
+    </form>>
+
+    <script>
+
+        function insert_work(){
+            var name = $('#name').val();
+            var num = $('#num').val();
+            var classes = $('#classes').val();
+            $.ajax({
+                url:'/work/add',
+                type:'POST',
+                data:{
+                    name:name,
+                    num:num,
+                    classes:classes
+                },
+                success:function(data){
+                    console.log(data)
+                    if(data.msg === "success"){
+                        alert('插入成功');
+                        window.location.reload();
+                    }else{
+                        alert('失败');
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

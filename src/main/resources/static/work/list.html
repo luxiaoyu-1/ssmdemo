@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+    <script src="https://cdn.staticfile.net/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>num</th>
+            <th>name</th>
+            <th>classes</th>
+            <th>mac_add</th>
+            <th>createtime</th>
+            <th>updatetime</th>
+        </tr>
+        <tr th:each="work : ${worklist}">
+            <td th:text="${work.id}"></td>
+            <td th:text="${work.num}"></td>
+            <td th:text="${work.name}"></td>
+            <td th:text="${work.classes}"></td>
+            <td th:text="${work.macAdd}"></td>
+            <td th:text="${work.createTime}"></td>
+            <td th:text="${work.updateTime}"></td>
+        </tr>
+    </table>
+
+</body>
+</html>

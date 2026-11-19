@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace要指定对应的Mapper接口全限定名 -->
+<mapper namespace="com.example.ssmdemo23.demos.mapper.workmapper">
+
+
+    <!-- 比如自定义一个根据工作名称查询工作记录的方法（仅为示例，可按需修改） -->
+    <select id="selectByWorkName" resultMap="BaseResultMap">
+        SELECT *
+        FROM work
+        WHERE name = #{workName}
+    </select>
+
+    <!-- 示例的更新工作记录中某个字段的方法（仅为示例，可按需修改） -->
+    <update id="updateWorkField">
+        UPDATE work
+        SET number = #{newNumber}
+        WHERE id = #{id}
+    </update>
+
+    <!-- MyBatis Plus会自动生成一些通用的ResultMap等基础配置，如果你没有特殊的字段映射等需求，这里可以直接使用BaseResultMap -->
+    <resultMap id="BaseResultMap" type="com.example.ssmdemo23.demos.entity.work">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="number" column="number"/>
+        <result property="mac" column="mac"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+</mapper>
